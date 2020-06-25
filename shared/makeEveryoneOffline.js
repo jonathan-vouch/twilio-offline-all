@@ -1,7 +1,7 @@
-const accountSid = 'AC472987643d4f4e38cce21f0efae0b008';
+const accountSid =  process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
-const workSpaceSid = 'WS92827f96fd99b691273fef2fb9c7bf6c';
-const offlineActivitySid = 'WA4508c5589db4e49678c1cc167baa8ca3';
+const workSpaceSid = process.env.TWILIO_WORKSPACE_SID;
+const offlineActivitySid = process.env.TWILIO_OFFLINE_ACTIVITY_SID;
 const client = require('twilio')(accountSid, authToken);
 
 module.exports = async function () {

@@ -9,5 +9,6 @@
   "dependencies": {
     "twilio": "^3.47.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "private": true
 }

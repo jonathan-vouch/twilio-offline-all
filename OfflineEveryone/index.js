@@ -4,7 +4,7 @@ module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
     try {
-        const x =await makeEveryoneOffline();
+        const x = await makeEveryoneOffline();
         console.log(x);
 
         context.res = {

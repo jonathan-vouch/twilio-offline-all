@@ -9,7 +9,7 @@ module.exports = async function () {
     const allWorkspaces = await client.taskrouter.workspaces.list();
     const workSpaceSid = allWorkspaces[0].sid;
 
-    //Grab the workers from the workspace
+    // Grab the workers from the workspace
     const taskRouterForWorkspace = client.taskrouter.workspaces(workSpaceSid);
     const allWorkers = await taskRouterForWorkspace.workers.list()
     const allWorkersNotOffline = allWorkers
@@ -17,14 +17,14 @@ module.exports = async function () {
 
     console.log(`${allWorkersNotOffline.length}/${allWorkers.length} workers not Offline`);
 
-    //Do it (make them offline)
+    // Do it (make them offline)
     await allWorkersNotOffline.forEach(async (worker) => {
         const reses = await worker.reservations().list();
         const acceptedReses = reses.filter(x => x.reservationStatus == "accepted");
 
         if (acceptedReses.length < 1) {
             const oldactivityName = worker.activityName;
-            //await worker.update({ activitySid: offlineActivitySid })
+            await worker.update({ activitySid: offlineActivitySid })
             console.log(`${worker.friendlyName} was ${oldactivityName}, now set to ${worker.activityName}.`);
         }
         else { //Do not offline those in the middle of a call/ chat

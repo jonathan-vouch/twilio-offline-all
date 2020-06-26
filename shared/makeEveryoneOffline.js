@@ -24,8 +24,8 @@ module.exports = async function () {
 
         if (acceptedReses.length < 1) {
             const oldactivityName = worker.activityName;
-            await worker.update({ activitySid: offlineActivitySid })
-            console.log(`${worker.friendlyName} was ${oldactivityName}, now set to ${worker.activityName}.`);
+            await worker.update({ activitySid: offlineActivitySid });
+            console.log(`${worker.friendlyName} was ${oldactivityName}, setting to Offline.`);
         }
         else { //Do not offline those in the middle of a call/ chat
             console.log(`${worker.friendlyName} still has an accepted reservation! Leaving them as ${worker.activityName}.`);
